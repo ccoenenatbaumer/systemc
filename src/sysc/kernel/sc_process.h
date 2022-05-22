@@ -422,6 +422,7 @@ class SC_API sc_process_b : public sc_object {
     const char*                 file;
     int                         lineno;
     int                         proc_id;
+    void*                       custom_handle;
 
   protected:
     int                          m_active_areset_n; // number of aresets active.
