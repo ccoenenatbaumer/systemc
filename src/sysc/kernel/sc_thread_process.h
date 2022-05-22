@@ -220,8 +220,14 @@ inline void sc_thread_process::suspend_me()
     if( m_cor_p != cor_p )
     {
         DEBUG_MSG( DEBUG_NAME , this, "suspending thread");
+        if (trace_suspend != nullptr) {
+            trace_suspend(this);
+        }
         simc_p->cor_pkg()->yield( cor_p );
         DEBUG_MSG( DEBUG_NAME , this, "resuming thread");
+        if (trace_resume != nullptr) {
+            trace_resume(this);
+        }
     }
 
     // IF THERE IS A THROW TO BE DONE FOR THIS PROCESS DO IT NOW:

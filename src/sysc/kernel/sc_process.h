@@ -47,6 +47,7 @@ namespace sc_core {
 class sc_process_handle;
 class sc_thread_process;
 class sc_reset;
+class sc_process_b;
 
 SC_API const char* sc_gen_unique_name( const char*, bool preserve_first );
 SC_API  sc_process_handle sc_get_current_process_handle();
@@ -61,6 +62,7 @@ SC_API extern bool sc_allow_process_control_corners; // see sc_simcontext.cpp.
 typedef class sc_cthread_process* sc_cthread_handle;
 typedef class sc_method_process*  sc_method_handle;
 typedef class sc_thread_process*  sc_thread_handle;
+typedef void (*trace_fct_t)(sc_process_b*);
 
 
 // Standard process types:
@@ -457,6 +459,10 @@ class SC_API sc_process_b : public sc_object {
 
   protected:
     static sc_process_b* m_last_created_process_p; // Last process created.
+
+  public:
+    static trace_fct_t trace_suspend;
+    static trace_fct_t trace_resume;
 };
 
 typedef sc_process_b sc_process_b;  // For compatibility.

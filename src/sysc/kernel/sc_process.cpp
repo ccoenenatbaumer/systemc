@@ -48,6 +48,8 @@ namespace sc_core {
 std::vector<sc_event*>  sc_process_handle::empty_event_vector;
 std::vector<sc_object*> sc_process_handle::empty_object_vector;
 sc_event                sc_process_handle::non_event( sc_event::kernel_event );
+trace_fct_t sc_process_b::trace_suspend;
+trace_fct_t sc_process_b::trace_resume;
 
 // Last process that was created:
 
